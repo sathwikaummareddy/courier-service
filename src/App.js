@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './components/Home';
+import OrderManagement from './components/OrderManagement';
+import OrderTracking from './components/OrderTracking';
+// Uncomment or add these imports if you have these components
+// import CustomerList from './components/CustomerList';
+// import AddCustomer from './components/AddCustomer';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/manage-orders" element={<OrderManagement />} />
+          <Route path="/track-order" element={<OrderTracking />} />
+          {/* Add routes for the missing components if they exist */}
+          {/* <Route path="/customers" element={<CustomerList />} />
+          <Route path="/add-customer" element={<AddCustomer />} /> */}
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
